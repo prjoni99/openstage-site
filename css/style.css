@@ -588,66 +588,47 @@ img { max-width: 100%; display: block; }
     z-index: 1;
 }
 
-/* ===== Architecture ===== */
-.arch-diagram {
-    max-width: 620px;
-    margin: 0 auto 40px;
+/* ===== Value Grid (Open Source section) ===== */
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-.arch-svg {
-    width: 100%;
-    height: auto;
-}
-
-.tech-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 32px;
-}
-
-.badge {
-    padding: 6px 16px;
+.value-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    transition: all 0.2s;
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.3s var(--ease-out);
 }
 
-.badge:hover {
+.value-card:hover {
     border-color: var(--border-hover);
-    color: var(--text);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 24px rgba(168,85,247,0.08);
 }
 
-.badge-python:hover { color: #3776AB; border-color: rgba(55,118,171,0.4); }
-.badge-fastapi:hover { color: #009688; border-color: rgba(0,150,136,0.4); }
-.badge-demucs:hover { color: var(--amber); border-color: rgba(251,191,36,0.4); }
-.badge-ws:hover { color: var(--purple-light); border-color: rgba(168,85,247,0.4); }
-.badge-docker:hover { color: #2496ED; border-color: rgba(36,150,237,0.4); }
-.badge-sqlite:hover { color: #003B57; border-color: rgba(0,59,87,0.4); }
-.badge-webaudio:hover { color: var(--cyan); border-color: rgba(6,182,212,0.4); }
-
-.mit-callout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 24px;
-    background: rgba(168,85,247,0.06);
-    border: 1px solid rgba(168,85,247,0.15);
-    border-radius: var(--radius-sm);
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--purple-light);
-    max-width: 420px;
-    margin: 0 auto;
+.value-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    line-height: 1;
 }
 
-.mit-icon { font-size: 1.3rem; }
+.value-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
 
 /* ===== CTA Section ===== */
 .cta-section {
@@ -796,8 +777,7 @@ img { max-width: 100%; display: block; }
     .stepper { padding-left: 32px; }
     .stepper-line-track { left: 15px; }
 
-    .arch-diagram { margin-bottom: 24px; }
-    .arch-svg { min-width: 500px; }
+    .value-grid { grid-template-columns: 1fr; }
 
     .footer-top { flex-direction: column; align-items: flex-start; }
 }
