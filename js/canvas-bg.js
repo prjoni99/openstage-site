@@ -26,24 +26,22 @@
     ];
 
     function resize() {
-        var rect = canvas.parentElement.getBoundingClientRect();
-        w = rect.width;
-        h = rect.height;
+        w = canvas.parentElement.clientWidth;
+        h = canvas.parentElement.clientHeight;
         canvas.width = w * dpr;
         canvas.height = h * dpr;
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     function initOrbs() {
         orbs = [];
+        var maxR = Math.min(w, h) * 0.4;
         for (var i = 0; i < orbCount; i++) {
             var color = orbColors[i % orbColors.length];
             orbs.push({
                 x: Math.random() * w,
                 y: Math.random() * h,
-                radius: 200 + Math.random() * 250,
+                radius: maxR * 0.5 + Math.random() * maxR * 0.5,
                 vx: (Math.random() - 0.5) * 0.3,
                 vy: (Math.random() - 0.5) * 0.3,
                 r: color.r,
@@ -110,6 +108,7 @@
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
             resize();
+            initOrbs();
             if (reducedMotion) draw(0);
         }, 150);
     });
